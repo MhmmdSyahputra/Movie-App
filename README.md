@@ -1,16 +1,24 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+## Clone Repository
+`git clone https://github.com/MhmmdSyahputra/Movie-App.git`
 
-## Getting Started
+## Install Dependencies
+`flutter pub get`
 
-This project is a starting point for a Flutter application.
+## How to Run
+`flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+## Home Screen
+![](https://raw.githubusercontent.com/MhmmdSyahputra/Movie-App/refs/heads/master/assets/resultPage/home-screen.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Detail Movie
+![](https://raw.githubusercontent.com/MhmmdSyahputra/Movie-App/refs/heads/master/assets/resultPage/detail-movie1.png)
+![](https://raw.githubusercontent.com/MhmmdSyahputra/Movie-App/refs/heads/master/assets/resultPage/detail-movie2.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Profile Watchlist
+![](https://raw.githubusercontent.com/MhmmdSyahputra/Movie-App/refs/heads/master/assets/resultPage/profile-watchlist.png)
+
+## Profile Favorite
+![](https://raw.githubusercontent.com/MhmmdSyahputra/Movie-App/refs/heads/master/assets/resultPage/profile-favorite.png)
+
