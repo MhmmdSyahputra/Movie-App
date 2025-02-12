@@ -10,21 +10,9 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  late Timer timer;
-
-  bool isRelayActive = false;
-
-  dynamic previousTime;
-
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
   }
 
   @override

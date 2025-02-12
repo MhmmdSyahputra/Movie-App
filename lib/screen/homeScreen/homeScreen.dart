@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/components/appbar/appBarControl.dart';
 import 'package:movie_app/components/ui/cardMovie.dart';
 import 'package:movie_app/model/movieModel.dart';
+import 'package:movie_app/screen/detailMovieScreen/detailMovieScreen.dart';
 import 'package:movie_app/service/movieService.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -80,7 +81,7 @@ class MovieSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 220,
+          height: 300,
           child: FutureBuilder<List<Movie>>(
             future: futureMovies,
             builder: (context, snapshot) {
@@ -98,9 +99,19 @@ class MovieSection extends StatelessWidget {
                     final movie = snapshot.data![index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: CardMovie(
-                        imageUrl:
-                            "https://image.tmdb.org/t/p/w200${movie.posterPath}",
+                      child: InkWell(
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DetailMovieScreen(movie: movie),
+                          ),
+                        ),
+                        child: CardMovie(
+                          imageUrl:
+                              "https://image.tmdb.org/t/p/w200${movie.posterPath}",
+                          title: movie.title,
+                          category: movie.title,
+                        ),
                       ),
                     );
                   },

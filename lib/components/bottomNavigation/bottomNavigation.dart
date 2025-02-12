@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/screen/homeScreen/homeScreen.dart';
+import 'package:movie_app/screen/profileScreen/profileScreen.dart';
 
 class BottomNavMain extends StatefulWidget {
   const BottomNavMain({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _BottomNavMainState extends State<BottomNavMain> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text("halaman2"),
-    Text("halaman2")
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
