@@ -19,7 +19,6 @@ class _BottomNavMainState extends State<BottomNavMain> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text("halaman2"),
     ProfileScreen(),
   ];
 
@@ -40,10 +39,6 @@ class _BottomNavMainState extends State<BottomNavMain> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Manual Book',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

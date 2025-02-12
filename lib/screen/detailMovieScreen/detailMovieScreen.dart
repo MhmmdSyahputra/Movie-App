@@ -18,7 +18,6 @@ class _DetailMovieScreenState extends State<DetailMovieScreen> {
   @override
   void initState() {
     super.initState();
-    // futureByGenreMovies = Movieservice().fetchMostMovies();
     futureByGenreMovies = Movieservice().fetchByGenreMovies(widget.movie.genreIds);
   }
   

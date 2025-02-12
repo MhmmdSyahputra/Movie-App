@@ -81,7 +81,7 @@ class MovieSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 300,
+          height: 350,
           child: FutureBuilder<List<Movie>>(
             future: futureMovies,
             builder: (context, snapshot) {
@@ -107,10 +107,7 @@ class MovieSection extends StatelessWidget {
                           ),
                         ),
                         child: CardMovie(
-                          imageUrl:
-                              "https://image.tmdb.org/t/p/w200${movie.posterPath}",
-                          title: movie.title,
-                          category: movie.title,
+                          movie: movie,
                         ),
                       ),
                     );

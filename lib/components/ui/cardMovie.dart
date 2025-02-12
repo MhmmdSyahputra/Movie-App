@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/model/movieModel.dart';
+import 'package:movie_app/providers/movieProvider.dart';
+import 'package:provider/provider.dart';
 
 class CardMovie extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String category;
+  final Movie movie;
 
-  const CardMovie({
-    Key? key,
-    required this.imageUrl,
-    required this.title,
-    required this.category,
-  }) : super(key: key);
+  const CardMovie({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final favoriteWatchlistModel = Provider.of<FavoriteWatchlistModel>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,7 +23,7 @@ class CardMovie extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              imageUrl,
+              'https://image.tmdb.org/t/p/w200${movie.posterPath}',
               width: 150,
               height: 220,
               fit: BoxFit.cover,
@@ -36,7 +34,7 @@ class CardMovie extends StatelessWidget {
         SizedBox(
           width: 150,
           child: Text(
-            title,
+            movie.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
@@ -46,16 +44,58 @@ class CardMovie extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 8),
         SizedBox(
           width: 150,
-          child: Text(
-            category,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: 150,
+                  child: Text(
+                    movie.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  favoriteWatchlistModel.favorites.contains(movie)
+                      ? Icons.bookmark
+                      : Icons.bookmark_border,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  if (favoriteWatchlistModel.favorites.contains(movie)) {
+                    favoriteWatchlistModel.removeFromFavorites(movie);
+                  } else {
+                    favoriteWatchlistModel.addToFavorites(movie);
+                  }
+                },
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: Icon(
+                  favoriteWatchlistModel.watchlist.contains(movie)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  if (favoriteWatchlistModel.watchlist.contains(movie)) {
+                    favoriteWatchlistModel.removeFromWatchlist(movie);
+                  } else {
+                    favoriteWatchlistModel.addToWatchlist(movie);
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ],

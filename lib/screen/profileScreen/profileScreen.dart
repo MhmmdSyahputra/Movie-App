@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/components/appbar/appBarControl.dart';
+import 'package:movie_app/components/ui/listMovie.dart';
+import 'package:movie_app/model/movieModel.dart';
+import 'package:movie_app/providers/movieProvider.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,6 +29,8 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
+    final favoriteWatchlistModel = Provider.of<FavoriteWatchlistModel>(context);
+
     return Scaffold(
       backgroundColor: const Color(0xff060420),
       appBar: AppBar(
@@ -35,12 +40,15 @@ class _ProfileScreenState extends State<ProfileScreen>
           child: Text(
             'My Profile',
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
         ),
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Colors.red,
+          labelColor: Colors.white,
           dividerColor: Colors.transparent,
           tabs: const [
             Tab(text: "Watchlist"),
@@ -51,14 +59,25 @@ class _ProfileScreenState extends State<ProfileScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Container(
-            child: Text("data1"),
-          ),
-          Container(
-            child: Text("data1"),
-          ),
+          MovieListSection(movies: favoriteWatchlistModel.watchlist),
+          MovieListSection(movies: favoriteWatchlistModel.favorites),
         ],
       ),
+    );
+  }
+}
+
+class MovieListSection extends StatelessWidget {
+  final List<Movie> movies;
+
+  const MovieListSection({Key? key, required this.movies}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: movies.map((movie) {
+        return MovieListCard(movie: movie);
+      }).toList(),
     );
   }
 }
