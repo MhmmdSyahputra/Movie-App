@@ -13,12 +13,13 @@ class DetailMovieScreen extends StatefulWidget {
 }
 
 class _DetailMovieScreenState extends State<DetailMovieScreen> {
-   late Future<List<Movie>> futureNowPlayingMovies;
+   late Future<List<Movie>> futureByGenreMovies;
 
   @override
   void initState() {
     super.initState();
-    futureNowPlayingMovies = Movieservice().fetchNowPlayingMovies();
+    // futureByGenreMovies = Movieservice().fetchMostMovies();
+    futureByGenreMovies = Movieservice().fetchByGenreMovies(widget.movie.genreIds);
   }
   
   @override
@@ -62,7 +63,7 @@ class _DetailMovieScreenState extends State<DetailMovieScreen> {
           ),
           const SizedBox(height: 30,),
           MovieSection(
-              title: "Similar Movie", futureMovies: futureNowPlayingMovies),
+              title: "Similar Movie", futureMovies: futureByGenreMovies),
         ],
       ),
     );

@@ -6,7 +6,7 @@ class Movie {
   final double popularity;
   final String releaseDate;
   final double voteAverage;
-  // final String genreIds;
+  final List genreIds;
 
   Movie({
     required this.id,
@@ -16,7 +16,7 @@ class Movie {
     required this.popularity,
     required this.releaseDate,
     required this.voteAverage,
-    // required this.genreIds,
+    required this.genreIds,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -28,7 +28,7 @@ class Movie {
       popularity: json['popularity'],
       releaseDate: json['release_date'],
       voteAverage: json['vote_average'],
-      // genreIds: json['genre_ids'],
+      genreIds: json['genre_ids'],
     );
   }
 }
