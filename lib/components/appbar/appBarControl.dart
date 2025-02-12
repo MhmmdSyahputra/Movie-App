@@ -30,7 +30,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.purple,
+      backgroundColor: Color(0xff25233D),
       title: const Text(
         'Movie APP',
         style: TextStyle(

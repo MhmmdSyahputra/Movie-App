@@ -33,6 +33,7 @@ class _BottomNavMainState extends State<BottomNavMain> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+      backgroundColor: Color(0xff25233D),
         elevation: 10,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -50,8 +51,8 @@ class _BottomNavMainState extends State<BottomNavMain> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.purple,
-        unselectedItemColor: Colors.black.withOpacity(0.6),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(0.3),
       ),
     );
   }
